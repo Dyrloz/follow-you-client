@@ -1,0 +1,39 @@
+{
+    "name": "@dyrloz/follow-you-client",
+    "version": "0.0.0",
+    "description": "Follow you is a npm package that will allow to generate a random id in a specific format and verify that an id have this format.",
+    "main": "follow-you.js",
+    "scripts": {
+        "test": "jest",
+        "test:cov": "jest --coverage",
+        "lint": "eslint \"follow-you.js\"",
+        "precommit": "pretty-quick --staged && npm run lint && npm run test",
+        "prepare": "husky install",
+        "release": "npm run test:cov && standard-version",
+        "release:minor": "npm run release -- --release-as minor",
+        "release:patch": "npm run release -- --release-as patch",
+        "release:major": "npm run release -- --release-as major"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Dyrloz/follow-you-client.git"
+    },
+    "author": "@Dyrloz",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Dyrloz/follow-you-client/issues"
+    },
+    "homepage": "https://github.com/Dyrloz/follow-you-client#readme",
+    "devDependencies": {
+        "eslint": "^8.30.0",
+        "husky": "^8.0.0",
+        "jest": "^29.3.1",
+        "standard-version": "^9.5.0"
+    },
+    "dependencies": {
+        "@commitlint/cli": "^17.3.0",
+        "@commitlint/config-conventional": "^17.3.0",
+        "prettier": "^2.8.1",
+        "pretty-quick": "^3.1.3"
+    }
+}

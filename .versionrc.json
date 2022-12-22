@@ -1,0 +1,14 @@
+{
+    "types": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "chore", "section": "Tasks" },
+        { "type": "docs", "section": "Documentation" },
+        { "type": "style", "section": "Style" },
+        { "type": "refactor", "section": "Refactor" },
+        { "type": "perf", "section": "Performance" },
+        { "type": "test", "section": "Tests" }
+    ],
+    "commitUrlFormat": "https://github.com/Dyrloz/follow-you-client/commit/{{hash}}",
+    "compareUrlFormat": "https://github.com/Dyrloz/follow-you-client/compare/{{previousTag}}...{{currentTag}}"
+}
