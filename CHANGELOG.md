@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/Dyrloz/follow-you-client/compare/v2.1.0...v2.1.1) (2023-01-04)
+
+### Bug Fixes
+
+-   transform characterToRemove into string before doing upper/lower case ([5bd4c81](https://github.com/Dyrloz/follow-you-client/commit/5bd4c8143dcd1d4ffdaae459050e1e4d624eed22))
+
 ## [2.1.0](https://github.com/Dyrloz/follow-you-client/compare/v2.0.0...v2.1.0) (2023-01-04)
 
 ### Features
