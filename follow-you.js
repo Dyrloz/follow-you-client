@@ -72,11 +72,13 @@ class FollowYou {
 
         for (let indexCharacterToRemove in charactersToRemove) {
             if (indexCharacterToRemove < charactersToRemove.length / 2) {
-                regexcharactersToRemove +=
-                    charactersToRemove[indexCharacterToRemove].toLowerCase();
+                regexcharactersToRemove += String(
+                    charactersToRemove[indexCharacterToRemove],
+                ).toLowerCase();
             } else {
-                regexcharactersToRemove +=
-                    charactersToRemove[indexCharacterToRemove].toUpperCase();
+                regexcharactersToRemove += String(
+                    charactersToRemove[indexCharacterToRemove],
+                ).toUpperCase();
             }
         }
 
