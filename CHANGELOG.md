@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Dyrloz/follow-you-client/compare/v1.0.0...v2.0.0) (2023-01-04)
+
+### Features
+
+-   add sessionId generation + verification, and use it to generate traceId ([23ba4c2](https://github.com/Dyrloz/follow-you-client/commit/23ba4c2d718ed406ab71156615da28a15f488076))
+
 ## [1.0.0](https://github.com/Dyrloz/follow-you-client/compare/v0.1.0...v1.0.0) (2022-12-22)
 
 ### Features
