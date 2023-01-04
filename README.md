@@ -1,6 +1,9 @@
 # Follow You - Client
 
-Follow you is a npm package that will allow to generate a random id in a specific format and verify that an id have this format.
+Follow You - Client is a npm package that will allow to generate and verify two different type of ID :
+
+-   a sessionID
+-   a traceId created from a sessionId
 
 ## Quality packages :
 
