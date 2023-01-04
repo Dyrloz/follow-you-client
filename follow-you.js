@@ -1,8 +1,11 @@
 const ALL_CHARACTERS =
     'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const SESSION_ID_LENGTH = 12;
-const TRACE_ID_BLOCK_LENGTH = [4, 6, 3, 5];
+const TRACE_ID_BLOCKS_LENGTH = [4, 6, 3, 5];
 const TRACE_ID_SEPARATION = '-';
+const RETRO_SESSION_ID_LENGTH = 10;
+const RETRO_TRACE_ID_BLOCKS_LENGTH = [2, 2, 3, 5];
+const RETRO_TRACE_ID_SEPARATION = '_';
 
 /**
  * Class used to generate and verify sessionId and traceId.
@@ -29,9 +32,13 @@ class FollowYou {
      * Generate a regex for the sessionId based on variable.
      * @returns RegExp Regex generated.
      */
-    static generateRegexSessionId() {
+    static generateRegexSessionId(isRetro = false) {
         return new RegExp(
-            '^[' + ALL_CHARACTERS + ']{' + SESSION_ID_LENGTH + '}$',
+            '^[' +
+                ALL_CHARACTERS +
+                ']{' +
+                (isRetro ? RETRO_SESSION_ID_LENGTH : SESSION_ID_LENGTH) +
+                '}$',
         );
     }
 
@@ -49,7 +56,10 @@ class FollowYou {
             return false;
         }
 
-        return sessionId.match(SESSION_ID_REGEX) !== null;
+        return (
+            sessionId.match(SESSION_ID_REGEX) !== null ||
+            sessionId.match(RETRO_SESSION_ID_REGEX) !== null
+        );
     }
 
     /**
@@ -86,13 +96,17 @@ class FollowYou {
         }
         let traceId = sessionId + TRACE_ID_SEPARATION;
 
-        for (const indexNbCharacters in TRACE_ID_BLOCK_LENGTH) {
-            for (let i = 0; i < TRACE_ID_BLOCK_LENGTH[indexNbCharacters]; i++) {
+        for (const indexNbCharacters in TRACE_ID_BLOCKS_LENGTH) {
+            for (
+                let i = 0;
+                i < TRACE_ID_BLOCKS_LENGTH[indexNbCharacters];
+                i++
+            ) {
                 traceId += TRACE_ID_CHARACTERS.charAt(
                     Math.floor(Math.random() * TRACE_ID_CHARACTERS.length),
                 );
             }
-            if (indexNbCharacters < TRACE_ID_BLOCK_LENGTH.length - 1)
+            if (indexNbCharacters < TRACE_ID_BLOCKS_LENGTH.length - 1)
                 traceId += TRACE_ID_SEPARATION;
         }
 
@@ -101,22 +115,32 @@ class FollowYou {
 
     /**
      * Generate a regex for the traceId based on variable.
+     * @param Boolean isRetro Define if the regex to generate is retrocompatible.
      * @returns RegExp Regex generated.
      */
-    static generateRegexTraceId() {
+    static generateRegexTraceId(isRetro) {
         let regexTraceId =
-            SESSION_ID_REGEX.toString().replace(/[/\\$]/g, '') +
-            TRACE_ID_SEPARATION;
-        const rangeCharacters = '[' + TRACE_ID_CHARACTERS + ']';
+            (isRetro ? RETRO_SESSION_ID_REGEX : SESSION_ID_REGEX)
+                .toString()
+                .replace(/[/\\$]/g, '') +
+            (isRetro ? RETRO_TRACE_ID_SEPARATION : TRACE_ID_SEPARATION);
+        const rangeCharacters =
+            '[' +
+            (isRetro ? RETRO_TRACE_ID_CHARACTERS : TRACE_ID_CHARACTERS) +
+            ']';
 
-        for (const indexNbCharacters in TRACE_ID_BLOCK_LENGTH) {
+        const blocksLength = isRetro
+            ? RETRO_TRACE_ID_BLOCKS_LENGTH
+            : TRACE_ID_BLOCKS_LENGTH;
+        const separation = isRetro
+            ? RETRO_TRACE_ID_SEPARATION
+            : TRACE_ID_SEPARATION;
+
+        for (const indexNbCharacters in blocksLength) {
             regexTraceId +=
-                rangeCharacters +
-                '{' +
-                TRACE_ID_BLOCK_LENGTH[indexNbCharacters] +
-                '}';
-            if (indexNbCharacters < TRACE_ID_BLOCK_LENGTH.length - 1)
-                regexTraceId += TRACE_ID_SEPARATION;
+                rangeCharacters + '{' + blocksLength[indexNbCharacters] + '}';
+            if (indexNbCharacters < blocksLength.length - 1)
+                regexTraceId += separation;
         }
 
         regexTraceId += '$';
@@ -138,12 +162,19 @@ class FollowYou {
             return false;
         }
 
-        return traceId.match(TRACE_ID_REGEX) !== null;
+        return (
+            traceId.match(TRACE_ID_REGEX) !== null ||
+            traceId.match(RETRO_TRACE_ID_REGEX) !== null
+        );
     }
 }
 
 const SESSION_ID_REGEX = FollowYou.generateRegexSessionId();
 const TRACE_ID_CHARACTERS = FollowYou.generateTraceIdCharacters('claude19');
 const TRACE_ID_REGEX = FollowYou.generateRegexTraceId();
+const RETRO_SESSION_ID_REGEX = FollowYou.generateRegexSessionId(true);
+const RETRO_TRACE_ID_CHARACTERS =
+    FollowYou.generateTraceIdCharacters('claude19');
+const RETRO_TRACE_ID_REGEX = FollowYou.generateRegexTraceId(true);
 
 module.exports = { FollowYou };

@@ -2,7 +2,7 @@ const { FollowYou } = require('./follow-you');
 const ALL_CHARACTERS =
     'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const SESSION_ID_LENGTH = 12;
-const TRACE_ID_BLOCK_LENGTH = [4, 6, 3, 5];
+const TRACE_ID_BLOCKS_LENGTH = [4, 6, 3, 5];
 const TRACE_ID_SEPARATION = '-';
 
 describe('Follow you', () => {
@@ -106,17 +106,17 @@ describe('Follow you', () => {
             it('should match total length', () => {
                 expect(traceId.length).toEqual(
                     SESSION_ID_LENGTH +
-                        TRACE_ID_BLOCK_LENGTH.reduce(
+                        TRACE_ID_BLOCKS_LENGTH.reduce(
                             (total, nbCharacter) => total + nbCharacter,
                             0,
                         ) +
-                        TRACE_ID_BLOCK_LENGTH.length,
+                        TRACE_ID_BLOCKS_LENGTH.length,
                 );
             });
 
             it('should have the same number of separation', () => {
                 expect(traceId.split(TRACE_ID_SEPARATION).length).toEqual(
-                    TRACE_ID_BLOCK_LENGTH.length + 1,
+                    TRACE_ID_BLOCKS_LENGTH.length + 1,
                 );
             });
 
@@ -125,13 +125,13 @@ describe('Follow you', () => {
                 expect(splitTraceId[0]).toEqual(sessionId);
             });
 
-            it('should the same number of random characters as defined in TRACE_ID_BLOCK_LENGTH separated by TRACE_ID_SEPARATION', () => {
+            it('should the same number of random characters as defined in TRACE_ID_BLOCKS_LENGTH separated by TRACE_ID_SEPARATION', () => {
                 const splitTraceId = traceId.split(TRACE_ID_SEPARATION);
-                for (const indexNbCharacter in TRACE_ID_BLOCK_LENGTH) {
+                for (const indexNbCharacter in TRACE_ID_BLOCKS_LENGTH) {
                     expect(
                         splitTraceId[Number.parseInt(indexNbCharacter) + 1]
                             .length,
-                    ).toEqual(TRACE_ID_BLOCK_LENGTH[indexNbCharacter]);
+                    ).toEqual(TRACE_ID_BLOCKS_LENGTH[indexNbCharacter]);
                 }
             });
         });
@@ -163,7 +163,7 @@ describe('Follow you', () => {
         it('should have the same number of separation', () => {
             expect(
                 stringRegexTraceId.split(TRACE_ID_SEPARATION).length,
-            ).toEqual(TRACE_ID_BLOCK_LENGTH.length + 1);
+            ).toEqual(TRACE_ID_BLOCKS_LENGTH.length + 1);
         });
 
         it('should have regexSessionId at the beginning', () => {
@@ -174,12 +174,12 @@ describe('Follow you', () => {
             );
         });
 
-        it('should the same number of random characters as defined in TRACE_ID_BLOCK_LENGTH, separated by TRACE_ID_SEPARATION', () => {
+        it('should the same number of random characters as defined in TRACE_ID_BLOCKS_LENGTH, separated by TRACE_ID_SEPARATION', () => {
             const splitRegexTraceId =
                 stringRegexTraceId.split(TRACE_ID_SEPARATION);
-            for (const indexNbCharacter in TRACE_ID_BLOCK_LENGTH) {
+            for (const indexNbCharacter in TRACE_ID_BLOCKS_LENGTH) {
                 const regex = new RegExp(
-                    '\\{' + TRACE_ID_BLOCK_LENGTH[indexNbCharacter] + '\\}',
+                    '\\{' + TRACE_ID_BLOCKS_LENGTH[indexNbCharacter] + '\\}',
                 );
                 expect(
                     splitRegexTraceId[Number.parseInt(indexNbCharacter) + 1],
