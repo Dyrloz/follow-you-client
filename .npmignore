@@ -1,0 +1,13 @@
+coverage/
+node_modules/
+.husky/
+.github/
+.commitlintrc.json
+.eslintrc.json
+.gitignore
+.npmignore
+.npmrc
+.prettierrc
+.versionrc.json
+CHANGELOG.md
+package-lock.json
