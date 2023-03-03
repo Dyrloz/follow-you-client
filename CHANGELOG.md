@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/Dyrloz/follow-you-client/compare/v2.1.1...v2.1.2) (2023-03-03)
+
+### Tasks
+
+-   add npmignore file to avoid getting uneeded file in npm package ([c6aee96](https://github.com/Dyrloz/follow-you-client/commit/c6aee96fe6da9625267dbe7a5784986cd143b6a4))
+
 ### [2.1.1](https://github.com/Dyrloz/follow-you-client/compare/v2.1.0...v2.1.1) (2023-01-04)
 
 ### Bug Fixes
