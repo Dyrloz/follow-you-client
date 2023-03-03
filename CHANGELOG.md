@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/Dyrloz/follow-you-client/compare/v2.1.2...v2.1.3) (2023-03-03)
+
+### Tasks
+
+-   add src folder and add files in it + change scripts ([49ad41e](https://github.com/Dyrloz/follow-you-client/commit/49ad41efd400c771812bf372605b2689c3741e6b))
+
 ### [2.1.2](https://github.com/Dyrloz/follow-you-client/compare/v2.1.1...v2.1.2) (2023-03-03)
 
 ### Tasks
