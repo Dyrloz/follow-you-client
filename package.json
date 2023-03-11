@@ -1,6 +1,6 @@
 {
     "name": "@dyrloz/follow-you-client",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "description": "Follow you is a npm package that will allow to generate a random id in a specific format and verify that an id have this format.",
     "main": "src/follow-you.js",
     "scripts": {
