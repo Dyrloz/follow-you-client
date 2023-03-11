@@ -70,7 +70,12 @@ class FollowYou {
         let traceIdCharacters = ALL_CHARACTERS;
         let regexcharactersToRemove = '';
 
-        for (let indexCharacterToRemove in charactersToRemove) {
+        for (
+            let indexCharacterToRemove = 0;
+            charactersToRemove &&
+            indexCharacterToRemove < charactersToRemove.length;
+            indexCharacterToRemove++
+        ) {
             if (indexCharacterToRemove < charactersToRemove.length / 2) {
                 regexcharactersToRemove += String(
                     charactersToRemove[indexCharacterToRemove],
